@@ -27,3 +27,7 @@ func GetAddPersonController()*controllers.AddPersonController{
 	useCase := application.NewAddPersonUc(&mySQL)
 	return controllers.NewAddPersonController(useCase)
 }
+func GetNewPersonIsAddedController()*controllers.GetNewPersonIsAddedController{
+	useCase := application.NewGetNewPersonIsAddedUc(&mySQL)
+	return controllers.NewGetNewPersonIsAddedController(useCase)
+}
