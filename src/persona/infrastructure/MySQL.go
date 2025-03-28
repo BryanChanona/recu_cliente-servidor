@@ -62,3 +62,14 @@ func (sql *MySQL)GetnewPersonIsAdded() (bool, error){
 
 	return false, nil
 }
+
+
+func (sql *MySQL) CountGender(sexo bool) (int, error) {
+	var count int
+	// Usamos el sexo (true para hombres, false para mujeres) como filtro
+	err := sql.db.QueryRow("SELECT COUNT(*) FROM personas WHERE sexo = ?", sexo).Scan(&count)
+	if err != nil {
+		return 0, fmt.Errorf("error obteniendo el conteo de personas de sexo %v: %v", sexo, err)
+	}
+	return count, nil
+}
